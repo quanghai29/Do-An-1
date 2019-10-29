@@ -7,26 +7,85 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow"
-        
+        FontSize="15"
+        FontFamily="Century Gothic"
         >
-
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Background="#f7f7f7">
-            <Button Cursor="Hand" Canvas.Top="70" Background="#f7f7f7" Width="95" BorderBrush="LightGray" Canvas.Left="5">
-                <StackPanel Orientation="Horizontal">
-                    <Image Height="20" Source="icons\refresh.png" Width="20"/>
-                    <TextBlock Text="Refresh" Margin="4,4,4,4" VerticalAlignment="Center" Width="41"/>
-                </StackPanel>
-            </Button>
-            <Button Width="95" Height="30px" Content="Add Method"  Canvas.Left="10" Canvas.Top="110"></Button>
-            <Button Width="95" Height="30px" Content="Add Method"  Canvas.Left="10" Canvas.Top="225"></Button>
-        </StackPanel>
-    </Grid>
 
+        <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="3" ShadowDepth="1"/>
+            </Border.Effect>
+            <StackPanel  Background="#f7f7f7" Margin="0,0,2,0">
+                
+                <Button  Cursor="Hand" 
+                         Margin="0,20,0,30" Height="50" 
+                         Background="#f7f7f7" 
+                         BorderThickness="0,1,1,0"  
+                         BorderBrush="LightGray">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Height="20" Source="icons\refresh.png" Width="32" Margin="0,0,2,0"/>
+                        <TextBlock Text="Refresh" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                
+                <Button Cursor="Hand" 
+                        Canvas.Top="110"
+                        BorderThickness="1" 
+                        Background="#f7f7f7" 
+                        BorderBrush="LightGray" 
+                        Canvas.Left="5" Margin="0,20,0,30" Height="50" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Source="icons\credit-card.png" Width="25" Margin="0,0,5,0"/>
+                        <TextBlock Text="Add Method" Margin="0,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                
+                <Button  Cursor="Hand" 
+                         Margin="0,20,0,30" Height="50" 
+                         Background="#f7f7f7" 
+                         BorderThickness="0,1,1,0"  
+                         BorderBrush="LightGray">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Height="20" Source="icons\refresh.png" Width="32" Margin="0,0,2,0"/>
+                        <TextBlock Text="Clear" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+
+    </Grid>
+    
 
 </Window>

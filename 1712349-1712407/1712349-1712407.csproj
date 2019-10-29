@@ -94,5 +94,8 @@
   <ItemGroup>
     <Resource Include="icons\refresh.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\credit-card.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
