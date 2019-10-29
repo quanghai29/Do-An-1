@@ -9,26 +9,45 @@
         WindowStyle="SingleBorderWindow"
         FontSize="15"
         FontFamily="Century Gothic"
+        Title="Batch rename"
+        Icon="icons\exchange.png"
         >
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2.4*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-
-        <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray">
+        
+        <!--Colum 1-->
+        <Border Grid.Column="0" BorderBrush="LightGray">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="3" ShadowDepth="1"/>
             </Border.Effect>
             <StackPanel  Background="#f7f7f7" Margin="0,0,2,0">
-                
-                <Button  Cursor="Hand" 
-                         Margin="0,20,0,30" Height="50" 
-                         Background="#f7f7f7" 
-                         BorderThickness="0,1,1,0"  
-                         BorderBrush="LightGray">
+                <StackPanel Orientation="Horizontal" Width="150" Height="31" Margin="0,5,10,15">
+                    <Image Height="20" Source="icons\dots-beginning-text-lines-interface-button-symbol.png" Width="32" Margin="0,0,2,0"/>
+                </StackPanel>
+                <!--Button start-->
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                         Background="#f7f7f7" BorderThickness="0,1,1,0"  BorderBrush="LightGray">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Height="20" Source="icons\beginning-media-button-arrow.png" Width="32" Margin="0,0,2,0"/>
+                        <TextBlock Text="Start" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
+                <!--Button Refresh-->
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                         Background="#f7f7f7" BorderThickness="0,1,1,0" BorderBrush="LightGray">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="0,15,15,0"/>
@@ -42,13 +61,10 @@
                         <TextBlock Text="Refresh" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                
-                <Button Cursor="Hand" 
-                        Canvas.Top="110"
-                        BorderThickness="1" 
-                        Background="#f7f7f7" 
-                        BorderBrush="LightGray" 
-                        Canvas.Left="5" Margin="0,20,0,30" Height="50" >
+
+                <!--Button add method-->
+                <Button Cursor="Hand" BorderThickness="1"  Background="#f7f7f7" 
+                        BorderBrush="LightGray"  Margin="0,20,5,20" Height="50" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="0,15,15,0"/>
@@ -62,12 +78,10 @@
                         <TextBlock Text="Add Method" Margin="0,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                
-                <Button  Cursor="Hand" 
-                         Margin="0,20,0,30" Height="50" 
-                         Background="#f7f7f7" 
-                         BorderThickness="0,1,1,0"  
-                         BorderBrush="LightGray">
+
+                <!--Button clear method-->
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                         Background="#f7f7f7" BorderThickness="0,1,1,0" BorderBrush="LightGray">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="0,15,15,0"/>
@@ -77,14 +91,50 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\refresh.png" Width="32" Margin="0,0,2,0"/>
-                        <TextBlock Text="Clear" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
+                        <Image Height="20" Source="icons\rubbish-bin.png" Width="32" Margin="0,0,2,0"/>
+                        <TextBlock Text="Clear Method" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
+
+                <!--Button Help-->
+                <Button Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
+                        BorderBrush="LightGray" Margin="0,20,5,20" Height="50" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Source="icons\info.png" Width="25" Margin="0,0,5,0"/>
+                        <TextBlock Text="Help" Margin="0,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
             </StackPanel>
         </Border>
-
-
+        
+        <!--Colum2-->
+        <Border Grid.Column="1" BorderBrush="LightGray" Margin="3,0,3,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="1"/>
+            </Border.Effect>
+            <StackPanel  Margin="0,0,2,0" Background="AntiqueWhite">
+                <!--Code Here-->
+            </StackPanel>
+        </Border>
+        
+        <!--Colum3-->
+        <Border Grid.Column="2" BorderBrush="LightGray" Margin="3,0,3,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="1"/>
+            </Border.Effect>
+            <StackPanel  Margin="0,0,2,0" Background="LightBlue">
+                <!--Code Here-->
+            </StackPanel>
+        </Border>
     </Grid>
     
 

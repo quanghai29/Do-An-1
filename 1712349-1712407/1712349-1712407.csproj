@@ -97,5 +97,20 @@
   <ItemGroup>
     <Resource Include="icons\credit-card.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\rubbish-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\beginning-media-button-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\exchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\dots-beginning-text-lines-interface-button-symbol.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
