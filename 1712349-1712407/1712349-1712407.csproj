@@ -113,16 +113,19 @@
     <Resource Include="icons\dots-beginning-text-lines-interface-button-symbol.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\arrow-pointing-down.png" />
-    <Resource Include="icons\arrow-up.png" />
+    <Resource Include="icons\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\first-track-multimedia-button.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="icons\downarrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\list.png" />
+    <Resource Include="icons\line-up-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\line-down-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\uparrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
