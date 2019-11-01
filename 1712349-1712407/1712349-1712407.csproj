@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -63,6 +64,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BingdingList.cs" />
+    <Compile Include="Contract.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,9 +104,6 @@
     <Resource Include="icons\rubbish-bin.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\beginning-media-button-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icons\info.png" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +111,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\dots-beginning-text-lines-interface-button-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\arrow-pointing-down.png" />
+    <Resource Include="icons\arrow-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\first-track-multimedia-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\list.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
