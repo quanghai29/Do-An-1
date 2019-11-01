@@ -127,5 +127,10 @@
   <ItemGroup>
     <Resource Include="icons\uparrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\arrow-pointing-down.png" />
+    <Resource Include="icons\arrow-up.png" />
+    <Resource Include="icons\list.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
