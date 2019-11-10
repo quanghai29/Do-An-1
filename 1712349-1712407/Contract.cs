@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace _1712349_1712407
 {
     // Danh sách các chức năng
@@ -68,13 +68,20 @@ namespace _1712349_1712407
         }
     }
 
-    // Name
-    public class StringName
+    public abstract class StringName
     {
         public string newName { get; set; }
-        public string Name { get; set; }
-        public string Path { get; set; }
         public string Error { get; set; }
+    }
+    // Name
+    public class StringFileName:StringName
+    {
+        public FileInfo infoName { get; set; }
+       
+    }
+    public class StringFolderName:StringName
+    {
+        public DirectoryInfo dri { get; set; }
     }
 
 }

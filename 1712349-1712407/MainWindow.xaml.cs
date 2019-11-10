@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
+
 namespace _1712349_1712407
 {
     /// <summary>
@@ -31,8 +32,8 @@ namespace _1712349_1712407
         
         List<StringOperation> _prototype = new List<StringOperation>();
         BindingList<StringOperation> _action = new BindingList<StringOperation>();
-        BindingList<StringName> _fileName = new BindingList<StringName>();
-        BindingList<StringName> _folderName = new BindingList<StringName>();
+        BindingList<StringFileName> _fileName = new BindingList<StringFileName>();
+        BindingList<StringFolderName> _folderName = new BindingList<StringFolderName>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var _prototype1 = new ReplaceOperation()
@@ -57,7 +58,11 @@ namespace _1712349_1712407
         private void Add_Method_Click(object sender, RoutedEventArgs e)
         {
             var action = prototypeMethodCobobox.SelectedItem as StringOperation;
-
+            if (action == null)
+            {
+                MessageBox.Show("Please Select Method first!");
+                return;
+            }
             _action.Add(action);
         }
 
@@ -83,13 +88,11 @@ namespace _1712349_1712407
             _fileName.Clear();
             for (int i = 0; i < filePaths.Length; i++)
             {
-                var infoName = new FileInfo(filePaths[i]);
-                
-                var filename = new StringName()
+                var file = new FileInfo(filePaths[i]);
+                var filename = new StringFileName()
                 {
-                    Name = infoName.Name,
+                    infoName=file,
                     newName = "",
-                    Path=infoName.FullName,
                     Error="",
                 };
                 _fileName.Add(filename);
@@ -118,18 +121,16 @@ namespace _1712349_1712407
                 _folderName.Clear();
             }
             // Display the names of the directories.
-            foreach (DirectoryInfo dri in diArr)
+            foreach (DirectoryInfo d in diArr)
             {
-                var foldername = new StringName()
+                var foldername = new StringFolderName()
                 {
-                    Name = dri.Name,
+                    dri = d,
                     newName = "",
-                    Path = dri.FullName,
                     Error = "",
                 };
                 _folderName.Add(foldername);
             }
-
         }
 
         private void EditOperationItem_Click(object sender, RoutedEventArgs e)
@@ -143,13 +144,48 @@ namespace _1712349_1712407
             var index= typeRename.SelectedIndex;
             if (index == 0)
             {
-                rename(_fileName);
+                var numberFile = _fileName.Count;
+                if (!checkErorr(numberFile))
+                    return;
+                for (int i = 0; i < numberFile; i++)
+                { 
+                    string begin = _fileName[i].infoName.Name;
+                    string final = begin;
+                    var numberAction = _action.Count;
+                    for (int j = 0; j < numberAction; j++)
+                    {
+                        final = _action[j].Operation(final);
+                    }
+                    //kiểm tra có thay đổi hay không
+                    if (final != begin)
+                    {
+                        _fileName[i].newName = final;
+                    }
+                }
                 fileView.ItemsSource = null;
                 fileView.ItemsSource = _fileName;
             }
             else if(index==1)
             {
-                rename(_folderName);
+                var numberFolder = _folderName.Count;
+                if (!checkErorr(numberFolder))
+                    return;
+                for (int i = 0; i < numberFolder; i++)
+                {
+                    string begin = _folderName[i].dri.Name;
+                    string final = begin;
+                    var numberAction = _action.Count;
+                    for (int j = 0; j < numberAction; j++)
+                    {
+                        final = _action[j].Operation(final);
+                    }
+                    //Kiểm tra có thay đổi hay không
+                    if (final != begin)
+                    {
+                        _folderName[i].newName = final;
+                    }
+                   
+                }
                 folderView.ItemsSource = null;
                 folderView.ItemsSource = _folderName;
             }
@@ -160,29 +196,72 @@ namespace _1712349_1712407
             
         }
 
-        private void rename(BindingList<StringName> names)
+        private bool checkErorr(int number)
         {
-            var numberAction = _action.Count;
-            if (numberAction == 0)
+            if (_action.Count == 0)
             {
                 MessageBox.Show("Please add method first");
-                return;
+                return false;
             }
-            var numberName = names.Count;
-            if(numberName == 0)
+            if(number == 0)
             {
                 MessageBox.Show("Please add file or folder");
+                return false;
+            }
+            return true;
+        }
+
+        private void OkFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var numberFile = _fileName.Count;
+            if (!checkErorr(numberFile))
                 return;
-            }
-            for (int i = 0; i < numberName; i++)
-            {
-                string final = names[i].Name;
-                for (int j = 0; j < numberAction; j++)
+            for (int i = 0; i < numberFile; i++)
+            { 
+                string newName = _fileName[i].newName;
+                if (newName != "")
                 {
-                    final = _action[j].Operation(final);
+                    newName = _fileName[i].infoName.Directory.FullName + "\\" + newName;
+                    try
+                    {
+                        _fileName[i].infoName.MoveTo(newName);
+                        _fileName[i].newName = "";
+                    }
+                    catch
+                    {
+
+                    }
+                    
                 }
-                names[i].newName = final;
             }
+            fileView.ItemsSource = null;
+            fileView.ItemsSource = _fileName;
+        }
+
+        private void OkFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var numberFolder = _folderName.Count;
+            if (!checkErorr(numberFolder))
+                return;
+            for (int i = 0; i < numberFolder; i++)
+            {
+                string newName = _folderName[i].newName;
+                if (newName != "")
+                {
+                    newName = _folderName[i].dri.Parent.FullName + "\\" + newName;
+                    try
+                    {
+                        _folderName[i].dri.MoveTo(newName);
+                        _folderName[i].newName = "";
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            folderView.ItemsSource = null;
+            folderView.ItemsSource = _folderName;
         }
     }
 }
