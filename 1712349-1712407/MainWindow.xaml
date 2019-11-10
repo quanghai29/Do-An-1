@@ -14,12 +14,22 @@
         Icon="icons\exchange.png"
          Loaded="Window_Loaded"
         >
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="Orange" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width="2.0*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1.0*"/>
+            <ColumnDefinition Width="1.8*"/>
+            <ColumnDefinition Width="5.5*"/>
         </Grid.ColumnDefinitions>
 
         <!--Colum 1-->
@@ -33,7 +43,8 @@
                 </StackPanel>
                 <!--Button start-->
                 <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
-                         Background="#f7f7f7" BorderThickness="0,1,1,0"  BorderBrush="LightGray">
+                         Background="#f7f7f7" BorderThickness="0,1,1,0"  BorderBrush="LightGray"
+                         Name="startButton" Click="StartButton_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="0,15,15,0"/>
@@ -43,7 +54,7 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\first-track-multimedia-button.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icons\play-and-pause-button.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Start" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -88,15 +99,15 @@
                     </StackPanel>
                 </Button>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Choose" VerticalAlignment="Center" FontSize="14" ></TextBlock>
-                    <ComboBox Name="prototypeMethodCobobox" Margin="5,15,5,5" Width="120" Height="30">
+                    <TextBlock Text="Choose" VerticalAlignment="Center" FontSize="12" ></TextBlock>
+                    <ComboBox Name="prototypeMethodCobobox" Margin="5,15,5,5" Width="100" Height="30">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Width="22"  Height="22" CornerRadius="50" Background="#1d7cf2" Padding="8,3,0,0">
-                                        <TextBlock Text="R" FontSize="12" FontWeight="Regular" Foreground="White"></TextBlock>
+                                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                    <Border Width="15"  Height="15" CornerRadius="52" Background="#1d7cf2" Padding="4,1,0,0">
+                                        <TextBlock Text="R" FontSize="10" FontWeight="Regular" Foreground="White"></TextBlock>
                                     </Border>
-                                    <TextBlock Text="{Binding Name}" FontSize="16" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="13" VerticalAlignment="Center" Margin="2,0,0,0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
@@ -183,7 +194,7 @@
                             <StackPanel>
                                 <StackPanel.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Edit"></MenuItem>
+                                        <MenuItem Name="editOperationItem" Header="Edit" Click="EditOperationItem_Click"></MenuItem>
                                     </ContextMenu>
                                 </StackPanel.ContextMenu>
                                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Width="311" Height="60">
@@ -199,7 +210,7 @@
 
                                         <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                             <TextBlock Text="{Binding Name}" FontSize="18" Margin="0,9,5,5" FontWeight="DemiBold"/>
-                                            <TextBlock Text="{Binding Description}" FontSize="12" FontWeight="Thin" Foreground="#0070c9"/>
+                                            <TextBlock Text="{Binding Description}" FontSize="12" FontWeight="Thin" Foreground="#0070c9" TextWrapping="Wrap"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -216,16 +227,21 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="5" ShadowDepth="1"/>
             </Border.Effect>
-            <DockPanel  Margin="0,0,2,0" Background="LightBlue">
+            <DockPanel  Margin="0,0,2,0">
                 <!--Code Here-->
-                <TabControl>
+                <TabControl Name="typeRename">
                     <TabItem Header="Rename Files">
                         <DockPanel LastChildFill="True">
-                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                                <Button Margin="5" BorderThickness="0" Height="30"  Background="Transparent"  BorderBrush="Transparent">
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
+                                <Button Margin="5" Height="30" Padding="2,0,0,0" Name="addFileNameButton" Click="AddFileNameButton_Click"
+                                        BorderBrush="Transparent" Cursor="Hand" BorderThickness="1" Background="#f7f7f7" >
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
+                                    
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\add.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                        <TextBlock Text="Add" Padding="5"/>
+                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
@@ -254,18 +270,18 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
-                                            <GridViewColumn Header="Filename" Width="200" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="Filename" Width="230" DisplayMemberBinding="{Binding Name}">
                                                
                                             </GridViewColumn>
-                                            <GridViewColumn Header="New Filename" Width="200" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="New Filename" Width="230" DisplayMemberBinding="{Binding newName,UpdateSourceTrigger=PropertyChanged}">
                                                 
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Path" Width="200" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding Path}">
                                                
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Error" Width="150" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="Error" Width="190" DisplayMemberBinding="{Binding Error}">
                                                 
                                             </GridViewColumn>
                                         </GridView.Columns>
@@ -277,10 +293,14 @@
                     <TabItem Header="Rename Folders">
                         <DockPanel LastChildFill="True">
                             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                                <Button Margin="5" BorderThickness="0" Height="30"  Background="Transparent"  BorderBrush="Transparent">
+                                <Button Margin="5" BorderThickness="0" Height="30" Padding="2,0,0,0" Background="#f7f7f7"  BorderBrush="Transparent"
+                                        Name="folderNameButton" Click="FolderNameButton_Click"  Cursor="Hand">
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\add.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                        <TextBlock Text="Add" Padding="5"/>
+                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
                                 <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
@@ -309,18 +329,18 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
-                                            <GridViewColumn Header="Foldername" Width="200" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="Foldername" Width="230" DisplayMemberBinding="{Binding Name}">
 
                                             </GridViewColumn>
-                                            <GridViewColumn Header="New Foldername" Width="200" DisplayMemberBinding="{Binding}">
-
-                                            </GridViewColumn>
-
-                                            <GridViewColumn Header="Path" Width="200" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="New Foldername" Width="230" DisplayMemberBinding="{Binding newName}">
 
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Error" Width="150" DisplayMemberBinding="{Binding}">
+                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding Path}">
+
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Header="Error" Width="170" DisplayMemberBinding="{Binding Error}">
 
                                             </GridViewColumn>
                                         </GridView.Columns>
