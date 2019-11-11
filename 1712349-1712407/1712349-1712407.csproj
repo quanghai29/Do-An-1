@@ -66,9 +66,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ISBNConfigDialog.xaml.cs">
+      <DependentUpon>ISBNConfigDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReplaceConfigDialog.xaml.cs">
       <DependentUpon>ReplaceConfigDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="ISBNConfigDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
