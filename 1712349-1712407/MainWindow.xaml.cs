@@ -49,10 +49,29 @@ namespace _1712349_1712407
             prototypeMethodCobobox.ItemsSource = _prototype;
             operationListBox.ItemsSource = _action;
 
+            var _prototype2 = new ISBNOperation()
+            {
+                Args = new ISBNArgs()
+                {
+                    Direction = "before"
+                }
+            };
+            _prototype.Add(_prototype2);
+            prototypeMethodCobobox.ItemsSource = _prototype;
+            operationListBox.ItemsSource = _action;
+
+            var _prototype3 = new UniqueOperation()
+            {
+
+            };
+            _prototype.Add(_prototype3);
+            prototypeMethodCobobox.ItemsSource = _prototype;
+            operationListBox.ItemsSource = _action;
+
 
             // ADD file 
             fileView.ItemsSource = _fileName;
-            //ADD folder
+            // ADD folder
             folderView.ItemsSource = _folderName;
         }
 
