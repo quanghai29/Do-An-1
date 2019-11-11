@@ -54,6 +54,29 @@ namespace _1712349_1712407
 >>>>>>> 3545d6a... fix Clone for operation
     }
 
+    //Move ISBN
+    public class ISBNArgs : StringArgs ,INotifyPropertyChanged
+    {
+        private string _direction;  // before/after
+
+        public string Direction
+        {
+            get => _direction;
+            set
+            {
+                _direction = value;
+                //NotifyChange("Direction");
+                NotifyChange("Description");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyChange(string v)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
+        }
+    }
+
     // Nhóm String Operation
     public abstract class StringOperation
     {
