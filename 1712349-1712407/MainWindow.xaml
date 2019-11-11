@@ -60,7 +60,7 @@
                 </Button>
 
                 <!--Button Refresh-->
-                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" Name="refreshButton" Click="RefreshButton_Click"
                          Background="#f7f7f7" BorderThickness="0,1,1,0" BorderBrush="LightGray">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -301,7 +301,7 @@
 
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Error" Width="400" >
+                                            <GridViewColumn Header="Error" Width="320" >
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <Grid Height="20" >

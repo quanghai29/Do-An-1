@@ -140,6 +140,7 @@ namespace _1712349_1712407
             item.Config();
         }
 
+        // Xử lý nút start Button
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             var index= typeRename.SelectedIndex;
@@ -169,7 +170,7 @@ namespace _1712349_1712407
                        
                         if (checkSameFile.Count() != 0)
                         {
-                            var NotifyError = $"There is a file already exists in the same location";
+                            var NotifyError = $"Name is a already exists on this location";
                             _fileName[i].Error = NotifyError;
                             ErrorFile++;
                         }
@@ -242,6 +243,7 @@ namespace _1712349_1712407
             return true;
         }
 
+        // Xử lý nút Ok 
         private void OkFileButton_Click(object sender, RoutedEventArgs e)
         {
             var numberFile = _fileName.Count;
@@ -305,6 +307,12 @@ namespace _1712349_1712407
             folderView.ItemsSource = _folderName;
             noteFolderTextBox.Text = "!No Warning";
             ErrorFolder = 0;
+        }
+
+        //Xử lý nút refresh  
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
