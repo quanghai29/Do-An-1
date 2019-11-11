@@ -176,6 +176,13 @@ namespace _1712349_1712407
                     for (int j = 0; j < numberAction; j++)
                     {
                         final = _action[j].Operation(final);
+                        //Check name file khong theo cau truc ISBN-name hoac name-ISBN
+                        if (final == null)
+                        {
+                            var NotifyError = $"The input file does not follow the structure ISBN-name or name-ISBN";
+                            _fileName[i].Error = NotifyError;
+                            ErrorFile++;
+                        }
                     }
                    
                     //kiểm tra có thay đổi hay không
@@ -215,7 +222,16 @@ namespace _1712349_1712407
                     for (int j = 0; j < numberAction; j++)
                     {
                         final = _action[j].Operation(final);
+
+                        //Check name file khong theo cau truc ISBN-name hoac name-ISBN
+                        if (final == null)
+                        {
+                            var NotifyError = $"The input folder does not follow the structure ISBN-name or name-ISBN";
+                            _folderName[i].Error = NotifyError;
+                            ErrorFolder++;
+                        }
                     }
+
                     //Kiểm tra có thay đổi hay không
                     if (final != begin)
                     {
@@ -225,7 +241,7 @@ namespace _1712349_1712407
                         var checkSameFile = _folderName.Where(x => x.dri.Name == final);
                         if (checkSameFile.Count() != 0)
                         {
-                            var NotifyError = $"There is a folder already exists in the same location";
+                            var NotifyError = $"File/Folder input khong theo cau truc ISBN-Name hoac Name-ISBN";
                             _folderName[i].Error = NotifyError;
                             ErrorFolder++;
                         }

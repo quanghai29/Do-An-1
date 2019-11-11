@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace _1712349_1712407
 {
@@ -156,9 +157,10 @@ namespace _1712349_1712407
             var isbnArgs = Args as ISBNArgs;
             string ext = Path.GetExtension(Origin);
             string newName = null;
+            Regex regex = new Regex(@"/[0-9^-]{13}/");
             if (isbnArgs.Direction == "before")
             {
-                if (ext != "")
+                if (ext != "" && regex.IsMatch(Origin) == true)
                 {
                     string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
                     string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
@@ -167,11 +169,12 @@ namespace _1712349_1712407
                 else
                 {
                     // khi file khong xac dinh hoac la folder
+                    return null;
                 }
             }
             else if (isbnArgs.Direction == "after")
             {
-                if (ext != "")
+                if (ext != "" && regex.IsMatch(Origin) == true)
                 {
                     string isbn = Origin.Substring(0, 13);
                     string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);
@@ -180,6 +183,7 @@ namespace _1712349_1712407
                 else
                 {
                     // khi file khong xac dinh hoac la folder
+                    return null;
                 }
             }
             return Origin.Replace(Origin, newName);
