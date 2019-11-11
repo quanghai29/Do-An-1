@@ -15,7 +15,7 @@
             </StackPanel>
             <TextBlock Text="By" Padding="15,20,15,0" Margin="10,20,1,0"/>
             <StackPanel VerticalAlignment="Center">
-                <TextBox Name="toTextBox" Width="150" Height="30" Padding="5,5,0,0"/>
+                <TextBox Name="toTextBox" Width="150" Height="30" Padding="5,5,0,0" Background="#f7f7f7"/>
                 <TextBlock Name="errorToTextBlock" Foreground="Red" FontSize="11"/>
             </StackPanel>
             <Button Name="changeButton" Click="ChangeButton_Click" Margin="10,0,0,20" Height="30" Padding="2,0,0,0" 

@@ -29,7 +29,8 @@ namespace _1712349_1712407
         {
             InitializeComponent();
         }
-        
+        int ErrorFile = 0;// Đếm số lượng lỗi
+        int ErrorFolder = 0;// Đếm số lượng lỗi 
         List<StringOperation> _prototype = new List<StringOperation>();
         BindingList<StringOperation> _action = new BindingList<StringOperation>();
         BindingList<StringFileName> _fileName = new BindingList<StringFileName>();
@@ -63,7 +64,7 @@ namespace _1712349_1712407
                 MessageBox.Show("Please Select Method first!");
                 return;
             }
-            _action.Add(action);
+            _action.Add(action.Clone());
         }
 
         
@@ -148,7 +149,8 @@ namespace _1712349_1712407
                 if (!checkErorr(numberFile))
                     return;
                 for (int i = 0; i < numberFile; i++)
-                { 
+                {
+                    //Lần lượt thực hiện các điều kiện
                     string begin = _fileName[i].infoName.Name;
                     string final = begin;
                     var numberAction = _action.Count;
@@ -156,14 +158,29 @@ namespace _1712349_1712407
                     {
                         final = _action[j].Operation(final);
                     }
+                   
                     //kiểm tra có thay đổi hay không
                     if (final != begin)
                     {
                         _fileName[i].newName = final;
+
+                        //Kiểm tra có trùng tên hay không 
+                        var checkSameFile = _fileName.Where(x => x.infoName.Name == final);
+                       
+                        if (checkSameFile.Count() != 0)
+                        {
+                            var NotifyError = $"There is a file already exists in the same location";
+                            _fileName[i].Error = NotifyError;
+                            ErrorFile++;
+                        }
                     }
                 }
                 fileView.ItemsSource = null;
                 fileView.ItemsSource = _fileName;
+
+                //Vùng cảnh báo
+                String NotifyWarning = $"!Warning\nThere are {ErrorFile} erorr \n If you want to continute, please press 'ok' else press 'cancle'";
+                noteFileTextBox.Text = NotifyWarning;
             }
             else if(index==1)
             {
@@ -172,6 +189,7 @@ namespace _1712349_1712407
                     return;
                 for (int i = 0; i < numberFolder; i++)
                 {
+                    //Lần lượt thực hiện các điều kiện 
                     string begin = _folderName[i].dri.Name;
                     string final = begin;
                     var numberAction = _action.Count;
@@ -183,11 +201,24 @@ namespace _1712349_1712407
                     if (final != begin)
                     {
                         _folderName[i].newName = final;
+
+                        //Kiểm tra có trùng tên hay không 
+                        var checkSameFile = _folderName.Where(x => x.dri.Name == final);
+                        if (checkSameFile.Count() != 0)
+                        {
+                            var NotifyError = $"There is a folder already exists in the same location";
+                            _folderName[i].Error = NotifyError;
+                            ErrorFolder++;
+                        }
                     }
                    
                 }
                 folderView.ItemsSource = null;
                 folderView.ItemsSource = _folderName;
+
+                //Vùng cảnh báo
+                String NotifyErorr = $"!Warning\nThere are {ErrorFolder} erorr \n If you want to continute, please press 'ok' else press 'cancle'";
+                noteFolderTextBox.Text = NotifyErorr;
             }
             else
             {
@@ -225,17 +256,22 @@ namespace _1712349_1712407
                     try
                     {
                         _fileName[i].infoName.MoveTo(newName);
-                        _fileName[i].newName = "";
                     }
                     catch
                     {
 
                     }
-                    
+                    _fileName[i].newName = "";
+                    if (_fileName[i].Error != "")
+                    {
+                        _fileName[i].Error = "";
+                    }
                 }
             }
             fileView.ItemsSource = null;
             fileView.ItemsSource = _fileName;
+            noteFileTextBox.Text = "!No Warning";
+            ErrorFile = 0;
         }
 
         private void OkFolderButton_Click(object sender, RoutedEventArgs e)
@@ -252,16 +288,23 @@ namespace _1712349_1712407
                     try
                     {
                         _folderName[i].dri.MoveTo(newName);
-                        _folderName[i].newName = "";
+                       
                     }
                     catch
                     {
 
                     }
+                    _folderName[i].newName = "";
+                    if (_folderName[i].Error != "")
+                    {
+                        _folderName[i].Error = "";
+                    }
                 }
             }
             folderView.ItemsSource = null;
             folderView.ItemsSource = _folderName;
+            noteFolderTextBox.Text = "!No Warning";
+            ErrorFolder = 0;
         }
     }
 }

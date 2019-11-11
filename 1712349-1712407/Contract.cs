@@ -16,11 +16,13 @@ namespace _1712349_1712407
     
     //Nhóm class args
     //Replace 
-    public class ReplaceArgs: StringArgs
+    public class ReplaceArgs: StringArgs, INotifyPropertyChanged
     {
         // Thay thế từ có trong chuỗi "From" thành "To"
         public string From { get; set; }
         public string To { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 
     // Nhóm String Operation
@@ -31,6 +33,8 @@ namespace _1712349_1712407
         public abstract string Name { get; }
         public abstract string Description { get; }
         public abstract void Config();
+
+        public abstract StringOperation Clone();
     }
 
     //Nhóm Operation
@@ -48,6 +52,19 @@ namespace _1712349_1712407
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public override StringOperation Clone()
+        {
+            var oldArgs = Args as ReplaceArgs;
+            return new ReplaceOperation()
+            {
+                Args = new ReplaceArgs()
+                {
+                    From = oldArgs.From,
+                    To = oldArgs.To
+                }
+            };
+        }
 
         public override void Config()
         {
