@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows;
+
 namespace _1712349_1712407
 {
 
@@ -24,6 +26,7 @@ namespace _1712349_1712407
         public string To { get; set; }
     }
 
+    //Move ISBN
     public class ISBNArgs : StringArgs ,INotifyPropertyChanged
     {
         private string _direction;  // before/after
@@ -39,16 +42,12 @@ namespace _1712349_1712407
             }
         }
 
-
-           public event PropertyChangedEventHandler PropertyChanged;
-           public void NotifyChange(string v)
-           {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
-           }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyChange(string v)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
+        }
     }
-
-
-
 
     // Nhóm String Operation
     public abstract class StringOperation
@@ -60,50 +59,6 @@ namespace _1712349_1712407
         public abstract void Config();
     }
 
-    public class ISBNOperation : StringOperation, INotifyPropertyChanged
-    {
-        public override string Name => "Move ISBN";
-        public override string Description
-        {
-            get
-            {
-                var args = Args as ISBNArgs;
-                return $"Move ISBN '{args.Direction}' name";
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public override void Config()
-        {
-            var args = Args as ISBNArgs;
-            var screen = new ISBNDialog(args);
-            if (screen.ShowDialog() == true)
-            {
-                PropertyChanged?.Invoke(this,
-                    new PropertyChangedEventArgs("Description"));
-            }
-        }
-
-        public override string Operation(string Origin)
-        {  
-            var isbnArgs = Args as ISBNArgs;
-            string ext = Path.GetExtension(Origin);
-            string newName = null;
-            if (isbnArgs.Direction == "before")
-            {
-                string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
-                string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
-                newName = $"{isbn}{name}{ext}";
-            }
-            else if (isbnArgs.Direction == "after")
-            {
-                string isbn = Origin.Substring(0, 13);
-                string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);
-                newName = $"{name}{isbn}{ext}";
-            }
-            return Origin.Replace(Origin, newName);
-        }
-    }
 
     //Nhóm Operation
     public class ReplaceOperation : StringOperation, INotifyPropertyChanged
@@ -140,7 +95,90 @@ namespace _1712349_1712407
         }
     }
 
+    public class ISBNOperation : StringOperation, INotifyPropertyChanged
+    {
+        public override string Name => "Move ISBN";
+        public override string Description
+        {
+            get
+            {
+                var args = Args as ISBNArgs;
+                return $"Move ISBN '{args.Direction}' name";
+            }
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public override void Config()
+        {
+            var args = Args as ISBNArgs;
+            var screen = new ISBNDialog(args);
+            if (screen.ShowDialog() == true)
+            {
+                PropertyChanged?.Invoke(this,
+                    new PropertyChangedEventArgs("Description"));
+            }
+        }
+
+        public override string Operation(string Origin)
+        {
+            var isbnArgs = Args as ISBNArgs;
+            string ext = Path.GetExtension(Origin);
+            string newName = null;
+            if (isbnArgs.Direction == "before")
+            {
+                if(ext != "")
+                {
+                    string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
+                    string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
+                    newName = $"{isbn}{name}{ext}";
+                }
+                else
+                {
+                    // khi file khong xac dinh hoac la folder
+                }
+            }
+            else if (isbnArgs.Direction == "after")
+            {
+               if (ext != "")
+               {
+                    string isbn = Origin.Substring(0, 13);
+                    string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);
+                    newName = $"{name}{isbn}{ext}";
+               }
+               else
+               {
+                    // khi file khong xac dinh hoac la folder
+               }
+            }
+            return Origin.Replace(Origin, newName);
+        }
+    }
+
+
+    public class UniqueOperation : StringOperation
+    {
+        public override string Name => "Unique name";
+        public override string Description
+        {
+            get
+            {
+                return "Generate unique name";
+            }
+        }
+
+        public override void Config()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string Operation(string Origin)
+        {
+            string ext = Path.GetExtension(Origin);
+            var g = Guid.NewGuid();
+            string newName = $"{g.ToString()}{ext}";
+            return Origin.Replace(Origin, newName);
+        }
+    }
 
 
     public abstract class StringName
