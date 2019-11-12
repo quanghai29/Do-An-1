@@ -137,7 +137,7 @@
                 </Button>
 
                 <!--Button Help-->
-                <Button Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
+                <Button Click="ShowHelpDialog" Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
                         BorderBrush="LightGray" Margin="0,20,5,20" Height="50" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">

@@ -115,7 +115,7 @@ namespace _1712349_1712407
         }
     }
 
-    public class ISBNOperation : StringOperation, INotifyPropertyChanged
+    public class ISBNOperation: StringOperation, INotifyPropertyChanged
     {
         public override string Name => "Move ISBN";
         public override string Description

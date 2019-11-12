@@ -341,5 +341,11 @@ namespace _1712349_1712407
             noteFolderTextBox.Text = "!No Warning";
             ErrorFolder = 0;
         }
+
+        private void ShowHelpDialog(object sender, RoutedEventArgs e)
+        {
+            var helpscreen = new HelpDialog();
+            helpscreen.ShowDialog();
+        }
     }
 }
