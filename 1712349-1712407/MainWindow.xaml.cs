@@ -32,9 +32,11 @@ namespace _1712349_1712407
         int ErrorFile = 0;// Đếm số lượng lỗi
         int ErrorFolder = 0;// Đếm số lượng lỗi 
         List<StringOperation> _prototype = new List<StringOperation>();
+        
         BindingList<StringOperation> _action = new BindingList<StringOperation>();
         BindingList<StringFileName> _fileName = new BindingList<StringFileName>();
         BindingList<StringFolderName> _folderName = new BindingList<StringFolderName>();
+        BindingList<HistoryAction> _preset = new BindingList<HistoryAction>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var _prototype1 = new ReplaceOperation()
@@ -66,13 +68,15 @@ namespace _1712349_1712407
             };
             _prototype.Add(_prototype3);
             prototypeMethodCobobox.ItemsSource = _prototype;
-            operationListBox.ItemsSource = _action;
+            operationListBox.ItemsSource = _action; 
 
 
             // ADD file 
             fileView.ItemsSource = _fileName;
             // ADD folder
             folderView.ItemsSource = _folderName;
+
+            presetComboBox.ItemsSource = _preset;
         }
 
         private void Add_Method_Click(object sender, RoutedEventArgs e)
@@ -171,7 +175,9 @@ namespace _1712349_1712407
                 for (int i = 0; i < numberFile; i++)
                 {
                     //Lần lượt thực hiện các điều kiện
-                    string begin = _fileName[i].infoName.Name;
+                    string begin;
+                    // lấy phần tên của  file 
+                    begin=System.IO.Path.GetFileNameWithoutExtension(_fileName[i].infoName.FullName);
                     string final = begin;
                     var numberAction = _action.Count;
                     for (int j = 0; j < numberAction; j++)
@@ -277,6 +283,7 @@ namespace _1712349_1712407
                     try
                     {
                         _fileName[i].infoName.MoveTo(newName);
+                        
                     }
                     catch
                     {
@@ -331,7 +338,83 @@ namespace _1712349_1712407
         //Xử lý nút refresh  
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            var index = typeRename.SelectedIndex;
+            if (index == 0)//view file
+            {
+                _fileName.Clear();
+                _action.Clear();
+                noteFileTextBox.Text = "!No Warning";
+                ErrorFile = 0;
+                presetComboBox.SelectedIndex = -1;
+            }
+            else if(index==1)//view folder
+            {
+                _folderName.Clear();
+                _action.Clear();
+                noteFolderTextBox.Text = "!No Warning";
+                ErrorFile = 0;
+                presetComboBox.SelectedIndex = -1;
+            }
+            else
+            {
+                //do no thing
+            }
+        }
 
+        private void SaveActionButton_Click(object sender, RoutedEventArgs e)
+        {
+            string myAction = ""; 
+            var screen = new saveActionDialog(myAction);
+            if (screen.ShowDialog() == true)
+            {
+                // Truyền theo kiểu tà đạo
+                myAction = screen.myNameAction;
+
+                var checkSameName = _preset.Where(x => x.actionName == myAction);
+
+                if (checkSameName.Count() != 0)
+                {
+                    MessageBox.Show($"{myAction} is a already exists ");
+                    return;
+                }
+
+                var numberAction = _action.Count();
+                var act = new BindingList<StringOperation>();
+                for(int i = 0; i < numberAction; i++)
+                {
+                    act.Add(_action[i]);
+                }
+                var saveAction = new HistoryAction
+                {
+                    action = act,
+                    actionName = myAction
+                };
+
+                
+                _preset.Add(saveAction);
+
+            }
+        }
+
+      
+        private void PresetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Bắt lỗi khi người dùng refresh 
+            if (presetComboBox.SelectedIndex == -1)
+                return;
+            //Tải lại action đã lưu
+            var myAction = presetComboBox.SelectedItem as HistoryAction;
+            var numberAction = myAction.action.Count();
+
+            _action.Clear();
+            
+            for(int i = 0; i < numberAction; i++)
+            {
+                _action.Add(myAction.action[i]);
+            }
+            
+            operationListBox.ItemsSource = _action;
         }
     }
 }

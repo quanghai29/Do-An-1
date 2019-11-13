@@ -226,6 +226,7 @@ namespace _1712349_1712407
     public class StringFileName:StringName
     {
         public FileInfo infoName { get; set; }
+
        
     }
     public class StringFolderName:StringName
@@ -233,4 +234,9 @@ namespace _1712349_1712407
         public DirectoryInfo dri { get; set; }
     }
 
+    public class HistoryAction
+    {
+        public BindingList<StringOperation> action { get; set; }
+        public string actionName { get; set; }
+    }
 }
