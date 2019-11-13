@@ -11,7 +11,7 @@
         FontSize="15"
         FontFamily="Century Gothic"
         Title="Batch rename"
-        Icon="icons\exchange.png"
+        Icon="icon/changeicon.png"
          Loaded="Window_Loaded"
         >
     <Window.Resources>
@@ -38,9 +38,25 @@
                 <DropShadowEffect BlurRadius="3" ShadowDepth="1"/>
             </Border.Effect>
             <StackPanel  Background="#f7f7f7" Margin="0,0,2,0">
-                <StackPanel Orientation="Horizontal" Width="150" Height="31" Margin="0,5,10,15">
-                    <Image Height="20" Source="icons\dots-beginning-text-lines-interface-button-symbol.png" Width="32" Margin="0,0,2,0"/>
-                </StackPanel>
+               <!--Button Save action-->
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                         Background="#f7f7f7" BorderThickness="0,1,1,0"  BorderBrush="LightGray"
+                         Name="saveActionButton" Click="SaveActionButton_Click"
+                         >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="0,15,15,0"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
+                    </Button.Effect>
+                    <StackPanel Orientation="Horizontal" Width="150" Height="31">
+                        <Image Height="20" Source="icon\save.png" Width="32" Margin="0,0,2,0"/>
+                        <TextBlock Text="Save Action" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
                 <!--Button start-->
                 <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
                          Background="#f7f7f7" BorderThickness="0,1,1,0"  BorderBrush="LightGray"
@@ -54,13 +70,13 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\play-and-pause-button.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\play-and-pause-button.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Start" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
 
                 <!--Button Refresh-->
-                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" Name="refreshButton" Click="RefreshButton_Click"
                          Background="#f7f7f7" BorderThickness="0,1,1,0" BorderBrush="LightGray">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -71,7 +87,7 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\refresh.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\refresh.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Refresh" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -94,7 +110,7 @@
                     </Button.Effect>
 
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Source="icons\credit-card.png" Width="25" Margin="0,0,5,0"/>
+                        <Image Source="icon\addmethod.png" Width="25" Margin="0,0,5,0"/>
                         <TextBlock Text="Add Method" Margin="0,0,0,2"  Width="100" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -117,7 +133,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
-               
+
                 <Border Margin="0,10,0,25" BorderBrush="WhiteSmoke" BorderThickness="0,1,0,1">
                     <Border.Effect>
                         <DropShadowEffect ShadowDepth="0.5" BlurRadius="5"></DropShadowEffect>
@@ -135,13 +151,13 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\rubbish-bin.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\rubbish-bin.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Clear Method" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
 
                 <!--Button Help-->
-                <Button Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
+                <Button Name="helpButton" Click="HelpButton_Click" Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
                         BorderBrush="LightGray" Margin="0,20,5,20" Height="50" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -152,7 +168,7 @@
                         <DropShadowEffect BlurRadius="8" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Source="icons\info.png" Width="25" Margin="0,0,5,0"/>
+                        <Image Source="icon\info.png" Width="25" Margin="0,0,5,0"/>
                         <TextBlock Text="Help" Margin="0,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -168,30 +184,26 @@
             <StackPanel  Margin="0,0,2,0" 
                           VerticalAlignment="Top" Background="White" Height="1080">
                 <!--Code Here-->
-
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="50" Height="50" Margin="10" Background="White" BorderBrush="White">
-                        <Image Source="icons\arrow-pointing-down.png"/>
-                    </Button>
-                    <Button Width="50" Margin="10" Background="White" BorderBrush="White">
-                        <Image Source="icons\arrow-up.png"/>
-                    </Button>
-                </StackPanel>
                 <ListView BorderBrush="Black" BorderThickness="0,0,0,1"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Preset" VerticalAlignment="Center" Margin="20,10,5,10" FontSize="17" FontWeight="Medium"/>
-                    <ComboBox Width="100" Height="30" Margin="10" BorderBrush="Black" BorderThickness="2">
+                    <ComboBox SelectionChanged="PresetComboBox_SelectionChanged" Name="presetComboBox"  Width="100" Height="30" Margin="10" BorderBrush="Black" BorderThickness="2">
                         <ComboBox.ItemTemplate>
-                            <DataTemplate/>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                    <TextBlock Text="{Binding actionName}" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                    <Image Source="icons\list.png"/>
+                    <Image Source="icon\listmethod.png"/>
                     <TextBlock Text="List Method" FontWeight="UltraBold" FontSize="20" Margin="5,10,0,8"></TextBlock>
                 </StackPanel>
-                
+
                 <ListBox Name="operationListBox" Height="600" Background="White" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -247,27 +259,34 @@
                                     <Button.Effect>
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
                                     </Button.Effect>
-                                    
+
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <Image Source="icon\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-up-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\uparrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\downarrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-down-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-                                
                             </StackPanel>
+                            <!-- Nhấn ok để thực hiện đổi hoặc nhấn cancle để reset lại-->
+                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="100" HorizontalAlignment="Right">
+                                <TextBox x:Name="noteFileTextBox" Text="!No Warning" IsReadOnly="True" Width="700" Height="95" 
+                                         Margin="0,2,20,2" Padding="5,10,0,0" Foreground="Blue" BorderBrush="Blue" BorderThickness="1"/>
+                                <Button Margin="0,3,20,2" Height="30" Padding="2,0,0,0" Background="#f7f7f7"  BorderBrush="Transparent"
+                                        x:Name="okFileButton"  Click="OkFileButton_Click" Cursor="Hand"  >
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
 
+                                    <TextBlock Text="Ok  " Padding="5" FontWeight="Bold"/>
+
+                                </Button>
+                                <Button Margin="0,3,20,2" Height="30" Padding="2,0,0,0" Background="#f7f7f7"  BorderBrush="Transparent"
+                                        x:Name="cancleFileButton"  Cursor="Hand"  >
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
+                                    <TextBlock Text="Cancle" Padding="5" FontWeight="Bold"/>
+                                </Button>
+                            </StackPanel>
                             <!--ListView Code-->
                             <ListView Margin="3" Name="fileView" BorderThickness="2">
                                 <ListView.ItemContainerStyle>
@@ -279,19 +298,25 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
-                                            <GridViewColumn Header="Filename" Width="230" DisplayMemberBinding="{Binding Name}">
-                                               
+                                            <GridViewColumn Header="Filename" Width="220" DisplayMemberBinding="{Binding infoName.Name}">
+
                                             </GridViewColumn>
-                                            <GridViewColumn Header="New Filename" Width="230" DisplayMemberBinding="{Binding newName,UpdateSourceTrigger=PropertyChanged}">
-                                                
+                                            <GridViewColumn Header="New Filename" Width="220" DisplayMemberBinding="{Binding newName,UpdateSourceTrigger=PropertyChanged}">
+
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding Path}">
-                                               
+                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding infoName.FullName}">
+
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Error" Width="190" DisplayMemberBinding="{Binding Error}">
-                                                
+                                            <GridViewColumn Header="Error" Width="320" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Height="20" >
+                                                            <TextBlock  Foreground="Red" Text="{Binding Error}"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
                                         </GridView.Columns>
                                     </GridView>
@@ -308,25 +333,30 @@
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
                                     </Button.Effect>
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <Image Source="icon\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-up-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\uparrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\downarrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-down-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-
                             </StackPanel>
-
+                            <!-- Nhấn Ok để thay đổi thật sự hoặc cancle để reset lại-->
+                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="100" HorizontalAlignment="Right">
+                                <TextBox Name="noteFolderTextBox" Text="!No Warning" IsReadOnly="True" Width="715" Height="95" 
+                                         Margin="0,0,20,0" Padding="5,10,0,0" Foreground="Blue" BorderBrush="Blue" BorderThickness="1"/>
+                                <Button Margin="0,3,20,2" Height="30" Padding="2,0,0,0" Background="#f7f7f7"  BorderBrush="Transparent"
+                                        Name="okFolderButton" Click="OkFolderButton_Click"  Cursor="Hand"  >
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
+                                    <TextBlock Text="Ok  " Padding="5" FontWeight="Bold"/>
+                                </Button>
+                                <Button Margin="0,3,20,2" Height="30" Padding="2,0,0,0" Background="#f7f7f7"  BorderBrush="Transparent"
+                                        Name="cancleFolderButton"  Cursor="Hand"  >
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
+                                    </Button.Effect>
+                                    <TextBlock Text="Cancle" Padding="5" FontWeight="Bold"/>
+                                </Button>
+                            </StackPanel>
                             <!--ListView Code-->
                             <ListView Margin="3" Name="folderView" BorderThickness="2">
                                 <ListView.ItemContainerStyle>
@@ -338,14 +368,14 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
-                                            <GridViewColumn Header="Foldername" Width="230" DisplayMemberBinding="{Binding Name}">
+                                            <GridViewColumn Header="Foldername" Width="230" DisplayMemberBinding="{Binding dri.Name}">
 
                                             </GridViewColumn>
                                             <GridViewColumn Header="New Foldername" Width="230" DisplayMemberBinding="{Binding newName}">
 
                                             </GridViewColumn>
 
-                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding Path}">
+                                            <GridViewColumn Header="Path" Width="250" DisplayMemberBinding="{Binding dri.FullName}">
 
                                             </GridViewColumn>
 

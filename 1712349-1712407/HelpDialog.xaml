@@ -1,0 +1,27 @@
+﻿<Window x:Class="_1712349_1712407.HelpDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1712349_1712407"
+        mc:Ignorable="d"
+        FontSize="15"
+        FontFamily="Century Gothic"
+        Icon="icon\info.png"
+        Title="Help" Height="320" Width="567.714">
+    <Canvas Margin="0,0,5,1">
+        <TextBlock Text="Hướng dẫn sử dụng Batch Rename" Foreground="LightSkyBlue" FontWeight="Bold" Canvas.Left="30" Canvas.Top="10"/>
+        <TextBlock Text="Chọn chế độ rename file hoặc rename folder" Canvas.Left="30" Canvas.Top="35"/>
+        <TextBlock Text="Nhấn nút Add để tiến hành Add file/folder cần đổi tên" Canvas.Left="30" Canvas.Top="55"/>
+        <TextBlock Text="Chọn method ở ô Choose và tiến hành Add Method" Canvas.Left="30" Canvas.Top="75"/>
+        <TextBlock Text="Nhấn chuột phải vào các method đã được add để edit thuộc tính" Canvas.Left="30" Canvas.Top="95"/>
+        <TextBlock Text="Nhấn nút mũi tên lên xuống để thay đổi thứ tự của các method" Canvas.Left="30" Canvas.Top="115"/>
+        <TextBlock Text="Clear method: Xóa các method đã được add" Canvas.Left="30" Canvas.Top="135"/>
+        <TextBlock Text="Preset: Tập các method đã được tạo ra" Canvas.Left="30" Canvas.Top="155"/>
+        <TextBlock Text="Nhấn nút Start để tiến hành thực thi các method" Canvas.Left="30" Canvas.Top="175"/>
+        <TextBlock Text="Nhấn nút OK để xác nhận thay đổi tên mới" Canvas.Left="30" Canvas.Top="195"/>
+        <Button Canvas.Left="239" Canvas.Top="230" BorderThickness="0" Width="101" Background="#3399CC" Height="31" Click="Button_Click">
+            <TextBlock Text="Thanks" Canvas.Left="30" Canvas.Top="195" Foreground="White" FontWeight="Bold"/>
+        </Button>
+    </Canvas>
+</Window>
