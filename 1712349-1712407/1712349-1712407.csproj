@@ -75,6 +75,9 @@
     <Compile Include="ReplaceConfigDialog.xaml.cs">
       <DependentUpon>ReplaceConfigDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="saveActionDialog.xaml.cs">
+      <DependentUpon>saveActionDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="HelpDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +102,10 @@
     <Page Include="ReplaceConfigDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="saveActionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -127,48 +134,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\credit-card.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\rubbish-bin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\exchange.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\dots-beginning-text-lines-interface-button-symbol.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\downarrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\line-up-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\line-down-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\uparrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\arrow-pointing-down.png" />
-    <Resource Include="icons\arrow-up.png" />
-    <Resource Include="icons\list.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icons\play-and-pause-button.png" />
+    <Resource Include="icon\addmethod.png" />
+    <Resource Include="icon\changeicon.png" />
+    <Resource Include="icon\folder.png" />
+    <Resource Include="icon\info.png" />
+    <Resource Include="icon\listmethod.png" />
+    <Resource Include="icon\play-and-pause-button.png" />
+    <Resource Include="icon\plus.png" />
+    <Resource Include="icon\refresh.png" />
+    <Resource Include="icon\rubbish-bin.png" />
+    <Resource Include="icon\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

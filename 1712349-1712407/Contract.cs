@@ -108,6 +108,8 @@ namespace _1712349_1712407
 
         public override string Operation(string Origin)
         {
+            if (Origin == null)
+                return null;
             var args = Args as ReplaceArgs;
             var from = args.From;
             var to = args.To;

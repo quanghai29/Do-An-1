@@ -11,7 +11,7 @@
         FontSize="15"
         FontFamily="Century Gothic"
         Title="Batch rename"
-        Icon="icons\exchange.png"
+        Icon="icon/changeicon.png"
          Loaded="Window_Loaded"
         >
     <Window.Resources>
@@ -52,7 +52,7 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\diskette.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\save.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Save Action" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -70,7 +70,7 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\play-and-pause-button.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\play-and-pause-button.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Start" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -87,7 +87,7 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\refresh.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\refresh.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Refresh" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -110,7 +110,7 @@
                     </Button.Effect>
 
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Source="icons\credit-card.png" Width="25" Margin="0,0,5,0"/>
+                        <Image Source="icon\addmethod.png" Width="25" Margin="0,0,5,0"/>
                         <TextBlock Text="Add Method" Margin="0,0,0,2"  Width="100" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -147,13 +147,13 @@
                         <DropShadowEffect BlurRadius="7" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Height="20" Source="icons\rubbish-bin.png" Width="32" Margin="0,0,2,0"/>
+                        <Image Height="20" Source="icon\rubbish-bin.png" Width="32" Margin="0,0,2,0"/>
                         <TextBlock Text="Clear Method" Margin="1,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
 
                 <!--Button Help-->
-                <Button Click="ShowHelpDialog" Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
+                <Button Name="helpButton" Click="HelpButton_Click" Cursor="Hand" Canvas.Top="110" BorderThickness="1" Background="#f7f7f7" 
                         BorderBrush="LightGray" Margin="0,20,5,20" Height="50" >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -164,7 +164,7 @@
                         <DropShadowEffect BlurRadius="8" ShadowDepth="1"/>
                     </Button.Effect>
                     <StackPanel Orientation="Horizontal" Width="150" Height="31">
-                        <Image Source="icons\info.png" Width="25" Margin="0,0,5,0"/>
+                        <Image Source="icon\info.png" Width="25" Margin="0,0,5,0"/>
                         <TextBlock Text="Help" Margin="0,0,0,2"  Width="120" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -180,15 +180,6 @@
             <StackPanel  Margin="0,0,2,0" 
                           VerticalAlignment="Top" Background="White" Height="1080">
                 <!--Code Here-->
-
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="50" Height="50" Margin="10" Background="White" BorderBrush="White">
-                        <Image Source="icons\arrow-pointing-down.png"/>
-                    </Button>
-                    <Button Width="50" Margin="10" Background="White" BorderBrush="White">
-                        <Image Source="icons\arrow-up.png"/>
-                    </Button>
-                </StackPanel>
                 <ListView BorderBrush="Black" BorderThickness="0,0,0,1"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Preset" VerticalAlignment="Center" Margin="20,10,5,10" FontSize="17" FontWeight="Medium"/>
@@ -205,7 +196,7 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                    <Image Source="icons\list.png"/>
+                    <Image Source="icon\listmethod.png"/>
                     <TextBlock Text="List Method" FontWeight="UltraBold" FontSize="20" Margin="5,10,0,8"></TextBlock>
                 </StackPanel>
 
@@ -261,23 +252,10 @@
                                     </Button.Effect>
 
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <Image Source="icon\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-up-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\uparrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\downarrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-down-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-
                             </StackPanel>
                             <!-- Nhấn ok để thực hiện đổi hoặc nhấn cancle để reset lại-->
                             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="100" HorizontalAlignment="Right">
@@ -346,23 +324,10 @@
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>
                                     </Button.Effect>
                                     <StackPanel Orientation="Horizontal" Height="30">
-                                        <Image Source="icons\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <Image Source="icon\plus.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Padding="5" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-up-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\uparrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\downarrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Button>
-                                <Button Margin="1" Height="25" BorderThickness="0" Background="Transparent"  BorderBrush="Transparent">
-                                    <Image Source="icons\line-down-arrow.png" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                </Button>
-
                             </StackPanel>
                             <!-- Nhấn Ok để thay đổi thật sự hoặc cancle để reset lại-->
                             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="100" HorizontalAlignment="Right">

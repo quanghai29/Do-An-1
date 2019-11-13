@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         FontSize="15"
         FontFamily="Century Gothic"
-        Icon="icons\info.png"
+        Icon="icon\info.png"
         Title="Help" Height="320" Width="567.714">
     <Canvas Margin="0,0,5,1">
         <TextBlock Text="Hướng dẫn sử dụng Batch Rename" Foreground="LightSkyBlue" FontWeight="Bold" Canvas.Left="30" Canvas.Top="10"/>
@@ -21,7 +21,7 @@
         <TextBlock Text="Nhấn nút Start để tiến hành thực thi các method" Canvas.Left="30" Canvas.Top="175"/>
         <TextBlock Text="Nhấn nút OK để xác nhận thay đổi tên mới" Canvas.Left="30" Canvas.Top="195"/>
         <Button Canvas.Left="239" Canvas.Top="230" BorderThickness="0" Width="101" Background="#3399CC" Height="31" Click="Button_Click">
-            <TextBlock Text="Đã hiểu" Canvas.Left="30" Canvas.Top="195" Foreground="White" FontWeight="Bold"/>
+            <TextBlock Text="Thanks" Canvas.Left="30" Canvas.Top="195" Foreground="White" FontWeight="Bold"/>
         </Button>
     </Canvas>
 </Window>

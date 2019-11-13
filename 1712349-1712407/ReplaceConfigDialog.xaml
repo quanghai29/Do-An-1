@@ -25,7 +25,7 @@
                 </Button.Effect>
 
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="icons\folder.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <Image Source="icon\folder.png" Width="25" RenderOptions.BitmapScalingMode="HighQuality"/>
                     <TextBlock Text="Change" Padding="5" FontWeight="Bold"/>
                 </StackPanel>
             </Button>

@@ -5,8 +5,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Threading.Tasks;
+
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -415,6 +416,14 @@ namespace _1712349_1712407
             }
             
             operationListBox.ItemsSource = _action;
+        }
+
+       
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new HelpDialog();
+            screen.ShowDialog();
         }
     }
 }

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace _1712349_1712407
 {
-    /// <summary>
-    /// Interaction logic for saveActionDialog.xaml
-    /// </summary>
     public partial class saveActionDialog : Window
     {
         public string myNameAction;
