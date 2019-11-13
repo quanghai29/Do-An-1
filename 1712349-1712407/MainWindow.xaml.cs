@@ -68,6 +68,21 @@ namespace _1712349_1712407
 
             };
             _prototype.Add(_prototype3);
+
+            var _prototype4 = new NewCaseOperation()
+            {
+                Args = new NewCaseArgs()
+                {
+                    Option = ""
+                }
+            };
+            _prototype.Add(_prototype4);
+
+
+            var _prototype5 = new FullnameNormalizeOperation();
+
+            _prototype.Add(_prototype5);
+
             prototypeMethodCobobox.ItemsSource = _prototype;
             operationListBox.ItemsSource = _action; 
 
@@ -161,6 +176,12 @@ namespace _1712349_1712407
         private void EditOperationItem_Click(object sender, RoutedEventArgs e)
         {
             var item = operationListBox.SelectedItem as StringOperation;
+            string temp = item.Description;
+            if (temp.Contains("Fullname Normalize"))
+            {
+                MessageBox.Show("This method can not edit!");
+                return;
+            }
             item.Config();
         }
 
@@ -277,6 +298,14 @@ namespace _1712349_1712407
             {
                 MessageBox.Show("Please add file or folder");
                 return false;
+            }
+            for (int i = 0; i <_action.Count; i++)
+            {
+                if (_action[i].Description.Contains("Hello"))
+                {
+                    MessageBox.Show($"Please choose a option for {_action[i].Name} method");
+                    return false;
+                }
             }
             return true;
         }
