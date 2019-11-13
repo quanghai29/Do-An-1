@@ -121,7 +121,7 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                     <Border Width="15"  Height="15" CornerRadius="52" Background="#1d7cf2" Padding="4,1,0,0">
-                                        <TextBlock Text="R" FontSize="10" FontWeight="Regular" Foreground="White"></TextBlock>
+                                        <TextBlock Text="{Binding Name[0]}" FontSize="10" FontWeight="Regular" Foreground="White"></TextBlock>
                                     </Border>
                                     <TextBlock Text="{Binding Name}" FontSize="13" VerticalAlignment="Center" Margin="2,0,0,0"/>
                                 </StackPanel>
@@ -136,7 +136,7 @@
                     </Border.Effect>
                 </Border>
                 <!--Button clear method-->
-                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" 
+                <Button  Cursor="Hand" Margin="0,20,5,20" Height="50" Name="clearMethodButton" Click="ClearMethodButton_Click"
                          Background="#f7f7f7" BorderThickness="0,1,1,0" BorderBrush="LightGray">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -207,6 +207,7 @@
                                 <StackPanel.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Name="editOperationItem" Header="Edit" Click="EditOperationItem_Click"></MenuItem>
+                                        <MenuItem Name="deleteOperationItem" Header="Delete" Click="DeleteOperationItem_Click"/>
                                     </ContextMenu>
                                 </StackPanel.ContextMenu>
                                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Width="311" Height="60">
@@ -216,7 +217,7 @@
                                             <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <Border Width="50"  Height="50" CornerRadius="50" Background="#1d7cf2" Padding="15,5,0,0">
-                                            <TextBlock Text="R" FontSize="32" FontWeight="Regular" Foreground="White"></TextBlock>
+                                            <TextBlock Text="{Binding Name[0]}" FontSize="32" FontWeight="Regular" Foreground="White"></TextBlock>
                                         </Border>
 
 

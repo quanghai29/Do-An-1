@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DeleteActionDialog.xaml.cs">
+      <DependentUpon>DeleteActionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelpDialog.xaml.cs">
       <DependentUpon>HelpDialog.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
     <Compile Include="saveActionDialog.xaml.cs">
       <DependentUpon>saveActionDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="DeleteActionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HelpDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

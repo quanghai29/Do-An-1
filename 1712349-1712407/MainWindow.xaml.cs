@@ -425,5 +425,21 @@ namespace _1712349_1712407
             var screen = new HelpDialog();
             screen.ShowDialog();
         }
+
+        private void ClearMethodButton_Click(object sender, RoutedEventArgs e)
+        {
+            _action.Clear();
+            operationListBox.ItemsSource = _action;
+        }
+
+        private void DeleteOperationItem_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new DeleteActionDialog();
+            if(screen.ShowDialog()==true)
+            {
+                var index = operationListBox.SelectedIndex;
+                _action.RemoveAt(index);
+            }
+        }
     }
 }
