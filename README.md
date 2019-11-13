@@ -1,9 +1,9 @@
 # MiniProject-Batch-Rename
 
 Thông tin nhóm thực hiện
-Mai Linh Đồng				1712349
-Nguyễn Hữu Duy      1712384
-Lê Quang Hải				1712407
+- Mai Linh Đồng				1712349
+- Nguyễn Hữu Duy      1712384
+- Lê Quang Hải				1712407
 
 Một số điểm đặc biệt cần lưu ý:
 + Phần Xử Lý các chức năng: có đầy đủ các chức năng Replace, newCase, moveISBN, uniqueName, fullName normalize
