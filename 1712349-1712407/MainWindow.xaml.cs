@@ -183,22 +183,30 @@ namespace _1712349_1712407
                     var numberAction = _action.Count;
                     for (int j = 0; j < numberAction; j++)
                     {
-                        final = _action[j].Operation(final);
+                        string temp = _action[j].Operation(final);
+                        if(temp!=null)
+                        {
+                            final = temp;
+                        }
                     }
                    
                     //kiểm tra có thay đổi hay không
                     if (final != begin)
                     {
-                        _fileName[i].newName = final;
+                       
 
                         //Kiểm tra có trùng tên hay không 
                         var checkSameFile = _fileName.Where(x => x.infoName.Name == final);
-                       
-                        if (checkSameFile.Count() != 0)
+                        var checkSamenewFile= _fileName.Where(x => x.newName == final);
+                        if (checkSameFile.Count() != 0 || checkSamenewFile.Count() != 0)
                         {
                             var NotifyError = $"Name is a already exists on this location";
                             _fileName[i].Error = NotifyError;
                             ErrorFile++;
+                        }
+                        else
+                        {
+                            _fileName[i].newName = final;
                         }
                     }
                 }
@@ -222,7 +230,11 @@ namespace _1712349_1712407
                     var numberAction = _action.Count;
                     for (int j = 0; j < numberAction; j++)
                     {
-                        final = _action[j].Operation(final);
+                        string temp = _action[j].Operation(final);
+                        if (temp != null)
+                        {
+                            final = temp;
+                        }
                     }
                     //Kiểm tra có thay đổi hay không
                     if (final != begin)
@@ -280,7 +292,8 @@ namespace _1712349_1712407
                 string newName = _fileName[i].newName;
                 if (newName != "")
                 {
-                    newName = _fileName[i].infoName.Directory.FullName + "\\" + newName;
+                    string extension= System.IO.Path.GetExtension(_fileName[i].infoName.FullName);
+                    newName = _fileName[i].infoName.Directory.FullName + "\\" + newName + extension;
                     try
                     {
                         _fileName[i].infoName.MoveTo(newName);

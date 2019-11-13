@@ -20,14 +20,11 @@ namespace _1712349_1712407
 
     //Nhóm class args
     //Replace 
-    public class ReplaceArgs: StringArgs, INotifyPropertyChanged
+    public class ReplaceArgs: StringArgs
     {
         // Thay thế từ có trong chuỗi "From" thành "To"
         public string From { get; set; }
         public string To { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
     }
 
     //Move ISBN
