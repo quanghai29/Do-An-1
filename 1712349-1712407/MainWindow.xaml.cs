@@ -43,10 +43,27 @@ namespace _1712349_1712407
                     To = "new string"
                 }
             };
+
             _prototype.Add(_prototype1);
+
+            var _prototype2 = new NewCaseOperation()
+            {
+                Args = new NewCaseArgs()
+                {
+                    Option = ""
+                }
+            };
+            _prototype.Add(_prototype2);
+
+
+            var _prototype3 = new FullnameNormalizeOperation();
+
+            _prototype.Add(_prototype3);
+
             prototypeMethodCobobox.ItemsSource = _prototype;
             operationListBox.ItemsSource = _action;
 
+           
 
             // ADD file 
             fileView.ItemsSource = _fileName;
@@ -135,6 +152,12 @@ namespace _1712349_1712407
         private void EditOperationItem_Click(object sender, RoutedEventArgs e)
         {
             var item = operationListBox.SelectedItem as StringOperation;
+            string temp = item.Description;
+            if(temp.Contains("Fullname Normalize"))
+            {
+                MessageBox.Show("This method can not edit!");
+                return;
+            }
             item.Config();
         }
 
@@ -143,6 +166,7 @@ namespace _1712349_1712407
             var index= typeRename.SelectedIndex;
             if (index == 0)
             {
+
                 rename(_fileName);
                 fileView.ItemsSource = null;
                 fileView.ItemsSource = _fileName;
@@ -168,6 +192,16 @@ namespace _1712349_1712407
                 MessageBox.Show("Please add method first");
                 return;
             }
+
+            for(int i=0;i<numberAction;i++)
+            {
+                if(_action[i].Description.Contains("Hello"))
+                {
+                    MessageBox.Show($"Please choose a option for {_action[i].Name} method");
+                    return;
+                }
+            }
+
             var numberName = names.Count;
             if(numberName == 0)
             {

@@ -101,14 +101,18 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Choose" VerticalAlignment="Center" FontSize="12" ></TextBlock>
                     <ComboBox Name="prototypeMethodCobobox" Margin="5,15,5,5" Width="100" Height="30">
+                        <!--<ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="20"  Height="15" CornerRadius="52" Background="#1d7cf2" Padding="4,1,0,0">
+                                    <TextBlock Text="Rp" FontSize="10" FontWeight="Regular" Foreground="White" ></TextBlock>
+                                </Border>
+                                <TextBlock Text="Replace" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </ComboBoxItem>-->
+                       
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
-                                    <Border Width="15"  Height="15" CornerRadius="52" Background="#1d7cf2" Padding="4,1,0,0">
-                                        <TextBlock Text="R" FontSize="10" FontWeight="Regular" Foreground="White"></TextBlock>
-                                    </Border>
-                                    <TextBlock Text="{Binding Name}" FontSize="13" VerticalAlignment="Center" Margin="2,0,0,0"/>
-                                </StackPanel>
+                                <TextBlock Text="{Binding Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -203,12 +207,17 @@
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Border Width="50"  Height="50" CornerRadius="50" Background="#1d7cf2" Padding="15,5,0,0">
+                                        <!--<Border Width="50"  Height="50" CornerRadius="50" Background="#1d7cf2" Padding="15,5,0,0">
                                             <TextBlock Text="R" FontSize="32" FontWeight="Regular" Foreground="White"></TextBlock>
                                         </Border>
+                                        <Border Width="50"  Height="50" CornerRadius="50" Background="#1d7cf2" Padding="15,5,0,0">
+                                            <TextBlock Text="N" FontSize="32" FontWeight="Regular" Foreground="White"></TextBlock>
+                                        </Border>
+                                        <Border Width="50"  Height="50" CornerRadius="50" Background="#1d7cf2" Padding="15,5,0,0">
+                                            <TextBlock Text="F" FontSize="32" FontWeight="Regular" Foreground="White"></TextBlock>
+                                        </Border>-->
 
-
-                                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                        <StackPanel Grid.Column="1" Margin="5,0,0,0">
                                             <TextBlock Text="{Binding Name}" FontSize="18" Margin="0,9,5,5" FontWeight="DemiBold"/>
                                             <TextBlock Text="{Binding Description}" FontSize="12" FontWeight="Thin" Foreground="#0070c9" TextWrapping="Wrap"/>
                                         </StackPanel>
