@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Threading.Tasks;
-
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -180,10 +179,15 @@ namespace _1712349_1712407
                     // lấy phần tên của  file 
                     begin=System.IO.Path.GetFileNameWithoutExtension(_fileName[i].infoName.FullName);
                     string final = begin;
+
                     var numberAction = _action.Count;
                     for (int j = 0; j < numberAction; j++)
                     {
-                        final = _action[j].Operation(final);
+                        string temp = _action[j].Operation(final);
+                        if(temp!=null)
+                        {
+                            final = temp;
+                        }
                     }
                    
                     //kiểm tra có thay đổi hay không
