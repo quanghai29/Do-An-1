@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1712349_1712407"
         mc:Ignorable="d"
-        Title="ReplaceConfigDialog" Height="150" Width="600" FontSize="16">
+        Title="ReplaceConfigDialog" Height="147.686" Width="597.686" FontSize="16">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Replace" Padding="15,20,15,0" Margin="10,20,0,0"/>

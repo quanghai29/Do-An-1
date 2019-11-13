@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="DeleteActionDialog" Height="120" Width="400">
     <StackPanel Orientation="Horizontal">
-        <TextBlock Text="Delete this action. Are you sure?" FontSize="16" VerticalAlignment="Center"/>
-        <Button  Margin="30,20,0,20" Height="30" Padding="2,0,0,0" Name="yesButton" Click="YesButton_Click"
+        <TextBlock Text="Delete this action. Are you sure?" FontSize="16" VerticalAlignment="Center" Margin="10,34,0,33" Width="232"/>
+        <Button  Margin="30,20,0,20" Height="30" Padding="2,0,0,0" x:Name="yesButton" Click="YesButton_Click"
              BorderBrush="Transparent" Cursor="Hand" BorderThickness="1" Background="#f7f7f7" >
             <Button.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1"/>

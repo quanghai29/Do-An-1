@@ -323,12 +323,12 @@ namespace _1712349_1712407
             var isbnArgs = Args as ISBNArgs;
             //string ext = Path.GetExtension(Origin);
             string newName = null;
-            //var regex = new Regex(@"/[0-9^-]{13}/");
-            string regex = @"/[0-9^-]{13}/";
+            var regex = new Regex(@"/[0-9-]{13}/");
+            //string regex = @"/[0-9-]{13}/";
             if (isbnArgs.Direction == "before")
             {
-                //regex.IsMatch(Origin) == true
-                if (Regex.IsMatch(Origin,regex))
+                //Regex.IsMatch(Origin,regex)
+                if (regex.Match(Origin) != null)
                 {
                     //string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
                     //string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
@@ -346,7 +346,7 @@ namespace _1712349_1712407
             else if (isbnArgs.Direction == "after")
             {
                 //regex.IsMatch(Origin) == true
-                if (Regex.IsMatch(Origin, regex)) 
+                if (regex.Match(Origin) != null) 
                 {
                     //string isbn = Origin.Substring(0, 13);
                     //string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);

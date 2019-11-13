@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1712349_1712407"
         mc:Ignorable="d"
-        Title="NewCaseConfigDialog" Height="450" Width="800">
+        Title="NewCaseConfigDialog" Height="170.455" Width="503.091">
     <Canvas Margin="0,0,2,-1">
-        <StackPanel Orientation="Horizontal" Canvas.Left="305" Canvas.Top="170" Height="29" Width="194">
+        <StackPanel Orientation="Horizontal" Canvas.Left="43" Canvas.Top="45" Height="29" Width="194">
             <TextBlock Text="Choose Option:" Margin="0,0,10,10" VerticalAlignment="Center"/>
             <ComboBox x:Name="NewCaseComboBox" Width="100" Height="26" Margin="0,2,0,1" SelectionChanged="NewCaseComboBox_SelectionChanged">
                 <ComboBoxItem>
@@ -21,7 +21,7 @@
                 </ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Button x:Name="okButton" Content="OK" Width="80" Height="26" Canvas.Left="524" Canvas.Top="173" Click="okButton_Click"/>
-        <Button x:Name="cancelButton" Content="Cancel" Width="80" Height="25" Canvas.Left="624" Canvas.Top="174" Click="cancelButton_Click"/>
+        <Button x:Name="okButton" Content="OK" Width="80" Height="26" Canvas.Left="259" Canvas.Top="47" Click="okButton_Click"/>
+        <Button x:Name="cancelButton" Content="Cancel" Width="80" Height="26" Canvas.Left="349" Canvas.Top="47" Click="cancelButton_Click"/>
     </Canvas>
 </Window>

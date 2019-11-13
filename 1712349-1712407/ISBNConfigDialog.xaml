@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_1712349_1712407"
         mc:Ignorable="d"
-        Title="ISBNConfigDialog" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
+        Title="ISBNConfigDialog" Height="393.181" Width="709.091">
+    <StackPanel Orientation="Vertical" Margin="0,0,0,-2">
         <TextBlock Margin="0,0,0,50" Text="ISBN Direction" TextAlignment="Center" FontSize="25" FontWeight="Bold"/>
 
 

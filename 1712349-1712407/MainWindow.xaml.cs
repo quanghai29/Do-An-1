@@ -200,6 +200,7 @@ namespace _1712349_1712407
                     string begin;
                     // lấy phần tên của  file 
                     begin=System.IO.Path.GetFileNameWithoutExtension(_fileName[i].infoName.FullName);
+                    string extension = System.IO.Path.GetExtension(_fileName[i].infoName.FullName);
                     string final = begin;
                     var numberAction = _action.Count;
                     for (int j = 0; j < numberAction; j++)
@@ -207,7 +208,7 @@ namespace _1712349_1712407
                         string temp = _action[j].Operation(final);
                         if(temp!=null)
                         {
-                            final = temp;
+                            final = $"{temp}{extension}";
                         }
                     }
                    
@@ -321,8 +322,8 @@ namespace _1712349_1712407
                 string newName = _fileName[i].newName;
                 if (newName != "")
                 {
-                    string extension= System.IO.Path.GetExtension(_fileName[i].infoName.FullName);
-                    newName = _fileName[i].infoName.Directory.FullName + "\\" + newName + extension;
+                    //string extension= System.IO.Path.GetExtension(_fileName[i].infoName.FullName);
+                    newName = _fileName[i].infoName.Directory.FullName + "\\" + newName;
                     try
                     {
                         _fileName[i].infoName.MoveTo(newName);
