@@ -235,7 +235,6 @@ namespace _1712349_1712407
             result += origin.Substring(0, foundPositon);
             result += temp;
             result += origin.Substring(foundPositon + 1, origin.Length - foundPositon - 1);
-
             return result;
         }
     }
@@ -322,16 +321,21 @@ namespace _1712349_1712407
         public override string Operation(string Origin)
         {
             var isbnArgs = Args as ISBNArgs;
-            string ext = Path.GetExtension(Origin);
+            //string ext = Path.GetExtension(Origin);
             string newName = null;
-            Regex regex = new Regex(@"/[0-9^-]{13}/");
+            //var regex = new Regex(@"/[0-9^-]{13}/");
+            string regex = @"/[0-9^-]{13}/";
             if (isbnArgs.Direction == "before")
             {
-                if (ext != "" && regex.IsMatch(Origin) == true)
+                //regex.IsMatch(Origin) == true
+                if (Regex.IsMatch(Origin,regex))
                 {
-                    string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
-                    string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
-                    newName = $"{isbn}{name}{ext}";
+                    //string isbn = Origin.Substring(Origin.Length - ext.Length - 13, 13);
+                    //string name = Origin.Substring(0, Origin.Length - isbn.Length - ext.Length);
+                    //newName = $"{isbn}{name}{ext}";
+                    string isbn = Origin.Substring(Origin.Length - 13, 13);
+                    string name = Origin.Substring(0, Origin.Length - isbn.Length);
+                    newName = $"{isbn}{name}";
                 }
                 else
                 {
@@ -341,11 +345,16 @@ namespace _1712349_1712407
             }
             else if (isbnArgs.Direction == "after")
             {
-                if (ext != "" && regex.IsMatch(Origin) == true)
+                //regex.IsMatch(Origin) == true
+                if (Regex.IsMatch(Origin, regex)) 
                 {
+                    //string isbn = Origin.Substring(0, 13);
+                    //string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);
+                    //newName = $"{name}{isbn}{ext}";
+
                     string isbn = Origin.Substring(0, 13);
-                    string name = Origin.Substring(13, Origin.Length - isbn.Length - ext.Length);
-                    newName = $"{name}{isbn}{ext}";
+                    string name = Origin.Substring(13, Origin.Length - isbn.Length);
+                    newName = $"{name}{isbn}";
                 }
                 else
                 {

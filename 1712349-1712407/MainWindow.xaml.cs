@@ -215,9 +215,9 @@ namespace _1712349_1712407
                     if (final != begin)
                     {
                        
-
+                       
                         //Kiểm tra có trùng tên hay không 
-                        var checkSameFile = _fileName.Where(x => x.infoName.Name == final);
+                        var checkSameFile = _fileName.Where(x => System.IO.Path.GetFileNameWithoutExtension(x.infoName.FullName) == final);
                         var checkSamenewFile= _fileName.Where(x => x.newName == final);
                         if (checkSameFile.Count() != 0 || checkSamenewFile.Count() != 0)
                         {
@@ -333,10 +333,11 @@ namespace _1712349_1712407
 
                     }
                     _fileName[i].newName = "";
-                    if (_fileName[i].Error != "")
-                    {
-                        _fileName[i].Error = "";
-                    }
+                    
+                }
+                if(_fileName[i].Error != "")
+                {
+                    _fileName[i].Error = "";
                 }
             }
             fileView.ItemsSource = null;
@@ -366,10 +367,11 @@ namespace _1712349_1712407
 
                     }
                     _folderName[i].newName = "";
-                    if (_folderName[i].Error != "")
-                    {
-                        _folderName[i].Error = "";
-                    }
+                    
+                }
+                if (_folderName[i].Error != "")
+                {
+                    _folderName[i].Error = "";
                 }
             }
             folderView.ItemsSource = null;
@@ -481,6 +483,42 @@ namespace _1712349_1712407
             {
                 var index = operationListBox.SelectedIndex;
                 _action.RemoveAt(index);
+            }
+        }
+
+        private void CancleFileButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+            var index = typeRename.SelectedIndex;
+            if (index == 0)//view file
+            {
+                var numberFile = _fileName.Count();
+                for (int i = 0; i < numberFile; i++)
+                {
+                    _fileName[i].newName = "";
+                    _fileName[i].Error = "";
+                }
+                fileView.ItemsSource = null;
+                fileView.ItemsSource = _fileName;
+                noteFileTextBox.Text = "!No Warning";
+                ErrorFile = 0;
+            }
+            else if (index == 1)//view folder
+            {
+                var numberFolder = _folderName.Count();
+                for (int i = 0; i < numberFolder; i++)
+                {
+                    _folderName[i].newName = "";
+                    _folderName[i].Error = "";
+                }
+                folderView.ItemsSource = null;
+                folderView.ItemsSource = _folderName;
+                noteFileTextBox.Text = "!No Warning";
+                ErrorFile = 0;
+            }
+            else
+            {
+                //do no thing
             }
         }
     }
